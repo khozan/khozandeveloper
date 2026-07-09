@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ 
+    darkMode: true, 
+    lang: 'en',
+    activeAppDetail: null, 
+    activeCategory: 'all',
+    searchQuery: '',
+    showToast: false, 
+    toastMsg: '',
+    
+    translations: {
+        en: {
+            navAbout: 'About',
+            navApps: 'Our Apps',
+            navFeatures: 'Features',
+            navTech: 'Tech Stack',
+            navFaq: 'FAQ',
+            navContact: 'Contact Us',
+            heroTagline: 'Learning & Innovation',
+            heroTitle: 'Building Smart Educational Apps for Everyone',
+            heroDesc: 'Khozan develops innovative, user-friendly educational apps that help users learn more effectively anytime, anywhere.',
+            heroExplore: 'Explore Apps',
+            heroContact: 'Contact Developer',
+            heroRating: '4.8/5 Play Store Rating',
+            heroDownloads: 'Downloaded by 50K+ users globally',
+            philosophyEdu: 'EDUCATIONAL',
+            philosophyEduDesc: 'High-quality curriculum and learning standards designed for progress.',
+            philosophyPrac: 'PRACTICAL',
+            philosophyPracDesc: 'Learn anytime, anywhere with clean, highly intuitive interfaces.',
+            philosophyInt: 'INTERACTIVE',
+            philosophyIntDesc: 'Infused with gamification, quick quizzes, and interactive elements.',
+            philosophyBen: 'BENEFICIAL',
+            philosophyBenDesc: 'Lovingly constructed to directly support your academic success.',
+            aboutSub: 'ABOUT KHOZAN DEVELOPER',
+            aboutTitle: 'Bringing Learning Revolutions Directly to Your Hand',
+            aboutDesc1: 'Khozan is an independent app developer dedicated to building modern technological solutions, smart educational systems, language learning assistants, and lightweight productivity tools.',
+            aboutDesc2: 'We believe studying should be inspiring, not rigid or boring. Through clean modern UI/UX, fast cloud integrations, and interactive algorithms, we provide learners worldwide with premium educational ecosystems.',
+            aboutBullet1: 'Specialized Android & Web Architecture',
+            aboutBullet2: 'Interactive Learning & Algorithm Integration',
+            aboutBullet3: 'Focus on Comprehensive Language Mastery',
+            aboutBullet4: 'User-First Minimalist Designs',
+            sandboxSub: 'Interactive Vocabulary Tool',
+            sandboxTitle: 'Quick Arabic Vocabulary Lookup',
+            sandboxDesc: 'Type a common word below to test our instant interactive translation engine.',
+            sandboxInputLabel: 'Type an Indonesian/English word (e.g., Halo, Terima kasih, Pagi):',
+            sandboxSend: 'Translate',
+            sandboxProcessing: 'Translating...',
+            sandboxOutputLabel: 'Arabic Translation:',
+            sandboxQuick: 'Quick Try:',
+            appsSub: 'Our Complete Portfolio',
+            appsTitle: 'Apps Developed by Khozan',
+            appsDesc: 'Browse through our specialized educational suite including advanced sciences, language reference materials, and humanities guides.',
+            appsSearchPlaceholder: 'Search apps...',
+            appsFilterAll: 'All Categories',
+            appsFilterLang: 'Languages',
+            appsFilterScience: 'Science & Math',
+            appsFilterSocial: 'Social & Humanities',
+            appsFilterArt: 'Art & Calligraphy',
+            appsGooglePlayBtn: 'Google Play',
+            appsDetailBtn: 'Details',
+            appsDevProfileBtn: 'View Play Store Developer Profile',
+            featuresSub: 'PREMIUM QUALITY',
+            featuresTitle: 'Engineering the Future of Learning',
+            featuresDesc: 'We don\'t just write code. We formulate optimized architectures for seamless educational delivery.',
+            feature1Title: 'Educational Focus',
+            feature1Desc: 'Structured curriculum mapping tailored for global educational standards.',
+            feature2Title: 'Smart Algorithms',
+            feature2Desc: 'Adaptive learning curves powered by cutting-edge interactive algorithms.',
+            feature3Title: 'Modern UI/UX',
+            feature3Desc: 'Beautiful responsive frameworks utilizing elegant visual micro-interactions.',
+            feature4Title: 'Offline Capability',
+            feature4Desc: 'Save network bandwidth with secure, local, high-speed cached databases.',
+            feature5Title: 'Cloud Sync',
+            feature5Desc: 'Safeguard your progress. Seamlessly sync history across different screen sizes.',
+            feature6Title: 'Simple Ergonomics',
+            feature6Desc: 'Zero complicated setup. Install the app and start studying immediately.',
+            feature7Title: 'High Performance',
+            feature7Desc: 'Super lightweight codes optimized to run fluidly even on budget hardware.',
+            feature8Title: 'Strict Security',
+            feature8Desc: 'Compliant with child safety guidelines. Total privacy encryption of study history.',
+            statsSub: 'PROVEN TRACTION',
+            statsTitle: 'Our Growth in Numbers',
+            statsDesc: 'Building educational resources that scale to meet the needs of modern learners.',
+            statsApps: 'Active Apps',
+            statsDownloads: 'Total Downloads',
+            statsRating: 'Average Rating',
+            statsUsers: 'Monthly Active Users',
+            techSub: 'MODERN STACK',
+            techTitle: 'Robust Foundations',
+            techDesc: 'We utilize safe, fast, and modern software engines to keep our apps reliable.',
+            gallerySub: 'PREMIUM USER INTERFACES',
+            galleryTitle: 'App Screen Gallery',
+            galleryDesc: 'Sneak peek of Khozan\'s intuitive layout guidelines, designed to minimize visual distraction.',
+            galleryTag: 'Mockup Screen #',
+            testimonialsSub: 'USER TESTIMONIALS',
+            testimonialsTitle: 'Stories of Academic Success',
+            testimonialsDesc: 'Hear from students, madrasah teachers, and self-taught learners using our software suite.',
+            faqSub: 'FREQUENTLY ASKED QUESTIONS',
+            faqTitle: 'FAQ',
+            faqDesc: 'Got questions about our releases, local storage, or API integrations? Read our summary.',
+            faq1Q: 'Are all applications by Khozan free to download?',
+            faq1A: 'Yes! The majority of our foundational educational products are completely free to download on the Google Play Store. Advanced features or multi-device cloud backup solutions might offer premium tiers.',
+            faq2Q: 'How can we order a custom learning application?',
+            faq2A: 'Simply use the contact form at the bottom of this page or email us directly at zanubah23@gmail.com. We are highly open to developing customized systems for schools, universities, and non-profits.',
+            faq3Q: 'Are Khozan apps safe for young children?',
+            faq3A: 'Absolutely. We follow strict COPPA/child protection guidelines. Our apps are strictly filtered, free from inappropriate ads, and validated directly by Google Play Protect.',
+            faq4Q: 'Do the vocabulary applications work without internet?',
+            faq4A: 'Yes. Core dictionary databases, calligraphy guides, and formula indices are stored directly on the device using light SQLite structures so you can study completely offline.',
+            contactSub: 'GET IN TOUCH',
+            contactTitle: 'Contact Developer Khozan',
+            contactDesc: 'Have feedback on our grammar modules, feature requests, or partnership ideas? Send a message.',
+            contactLabelName: 'Full Name',
+            contactLabelEmail: 'Email Address',
+            contactLabelMsg: 'Message',
+            contactPlaceholderName: 'Enter your name...',
+            contactPlaceholderEmail: 'you@example.com',
+            contactPlaceholderMsg: 'Detail your message here...',
+            contactSendBtn: 'Send Message',
+            contactSending: 'Sending...',
+            contactSuccess: 'Message sent successfully! We will get back to you soon.',
+            footerDesc: 'Building Educational Apps with Innovation. Lovingly crafted to bring premium digital tools to all classrooms.',
+            footerCopyright: '© 2026 Khozan Developer. All Rights Reserved.',
+            toastClose: 'Click anywhere to close'
+        },
+        id: {
+            navAbout: 'Tentang',
+            navApps: 'Aplikasi Kami',
+            navFeatures: 'Fitur',
+            navTech: 'Teknologi',
+            navFaq: 'FAQ',
+            navContact: 'Hubungi Kami',
+            heroTagline: 'Inovasi Pembelajaran',
+            heroTitle: 'Membangun Aplikasi Edukasi Pintar untuk Semua',
+            heroDesc: 'Khozan mengembangkan aplikasi pendidikan inovatif dan mudah digunakan yang membantu pengguna belajar lebih efektif kapan saja, di mana saja.',
+            heroExplore: 'Jelajahi Aplikasi',
+            heroContact: 'Hubungi Pengembang',
+            heroRating: '4.8/5 Rating Play Store',
+            heroDownloads: 'Diunduh oleh 50K+ pengguna global',
+            philosophyEdu: 'EDUKATIF',
+            philosophyEduDesc: 'Kurikulum berkualitas tinggi dan standar pembelajaran yang dirancang untuk kemajuan.',
+            philosophyPrac: 'PRAKTIS',
+            philosophyPracDesc: 'Belajar kapan saja, di mana saja dengan antarmuka yang bersih dan intuitif.',
+            philosophyInt: 'INTERAKTIF',
+            philosophyIntDesc: 'Dilengkapi dengan gamifikasi, kuis cepat, dan elemen interaktif.',
+            philosophyBen: 'BERMANFAAT',
+            philosophyBenDesc: 'Dibuat sepenuh hati untuk mendukung kesuksesan akademik Anda secara langsung.',
+            aboutSub: 'TENTANG KHOZAN DEVELOPER',
+            aboutTitle: 'Membawa Revolusi Pembelajaran ke Genggaman Tangan Anda',
+            aboutDesc1: 'Khozan adalah pengembang aplikasi independen yang berdedikasi membangun solusi teknologi modern, sistem edukasi cerdas, asisten belajar bahasa, dan alat produktivitas ringan.',
+            aboutDesc2: 'Kami percaya belajar harus menginspirasi, bukan kaku atau membosankan. Melalui UI/UX modern yang bersih, integrasi cloud yang cepat, dan algoritma interaktif, kami menyediakan ekosistem pendidikan premium untuk dunia.',
+            aboutBullet1: 'Arsitektur Aplikasi Android & Web Khusus',
+            aboutBullet2: 'Integrasi Algoritma Interaktif & Pembelajaran',
+            aboutBullet3: 'Fokus pada Penguasaan Bahasa Secara Komprehensif',
+            aboutBullet4: 'Desain Minimalis Berorientasi Pengguna',
+            sandboxSub: 'Alat Kosakata Interaktif',
+            sandboxTitle: 'Pencarian Kosakata Arab Cepat',
+            sandboxDesc: 'Ketik kata umum di bawah ini untuk menguji mesin terjemahan interaktif instan kami.',
+            sandboxInputLabel: 'Ketik kata Indonesia/Inggris (contoh: Halo, Terima kasih, Pagi):',
+            sandboxSend: 'Terjemahkan',
+            sandboxProcessing: 'Menerjemahkan...',
+            sandboxOutputLabel: 'Hasil Terjemahan Arab:',
+            sandboxQuick: 'Coba Cepat:',
+            appsSub: 'Portofolio Lengkap Kami',
+            appsTitle: 'Aplikasi yang Dikembangkan oleh Khozan',
+            appsDesc: 'Jelajahi rangkaian edukasi khusus kami termasuk sains tingkat lanjut, materi referensi bahasa, dan panduan humaniora.',
+            appsSearchPlaceholder: 'Cari aplikasi...',
+            appsFilterAll: 'Semua Kategori',
+            appsFilterLang: 'Bahasa',
+            appsFilterScience: 'Sains & Matematika',
+            appsFilterSocial: 'Sosial & Humaniora',
+            appsFilterArt: 'Seni & Kaligrafi',
+            appsGooglePlayBtn: 'Google Play',
+            appsDetailBtn: 'Rincian',
+            appsDevProfileBtn: 'Lihat Profil Pengembang Play Store',
+            featuresSub: 'KUALITAS PREMIUM',
+            featuresTitle: 'Membangun Masa Depan Pembelajaran',
+            featuresDesc: 'Kami tidak sekadar menulis kode. Kami memformulasikan arsitektur yang dioptimalkan untuk penyampaian edukasi tanpa hambatan.',
+            feature1Title: 'Fokus Edukasi',
+            feature1Desc: 'Pemetaan kurikulum terstruktur yang disesuaikan dengan standar pendidikan global.',
+            feature2Title: 'Algoritma Pintar',
+            feature2Desc: 'Kurva pembelajaran adaptif yang didukung oleh algoritma interaktif mutakhir.',
+            feature3Title: 'UI/UX Modern',
+            feature3Desc: 'Kerangka kerja responsif yang indah memanfaatkan mikro-interaksi visual yang elegan.',
+            feature4Title: 'Kemampuan Offline',
+            feature4Desc: 'Hemat bandwidth internet dengan basis data lokal terenkripsi berkecepatan tinggi.',
+            feature5Title: 'Sinkronisasi Cloud',
+            feature5Desc: 'Amankan kemajuan Anda. Sinkronkan riwayat belajar dengan lancar di berbagai ukuran layar.',
+            feature6Title: 'Ergonomis Sederhana',
+            feature6Desc: 'Tanpa setup rumit. Cukup pasang aplikasi dan langsung mulai belajar.',
+            feature7Title: 'Performa Tinggi',
+            feature7Desc: 'Kode super ringan yang dioptimalkan agar tetap lancar di perangkat berspesifikasi rendah.',
+            feature8Title: 'Keamanan Ketat',
+            feature8Desc: 'Patuh pada panduan keselamatan anak. Enkripsi total untuk data riwayat belajar.',
+            statsSub: 'TRAKSI TERBUKTI',
+            statsTitle: 'Pertumbuhan Kami dalam Angka',
+            statsDesc: 'Membangun sumber daya pendidikan yang berkembang untuk memenuhi kebutuhan pembelajar modern.',
+            statsApps: 'Aplikasi Aktif',
+            statsDownloads: 'Total Unduhan',
+            statsRating: 'Rata-Rata Rating',
+            statsUsers: 'Pengguna Aktif Bulanan',
+            techSub: 'TEKNOLOGI MODERN',
+            techTitle: 'Pondasi yang Kokoh',
+            techDesc: 'Kami menggunakan mesin perangkat lunak yang aman, cepat, dan modern untuk menjaga keandalan aplikasi kami.',
+            gallerySub: 'ANTARMUKA PENGGUNA PREMIUM',
+            galleryTitle: 'Galeri Tampilan Aplikasi',
+            galleryDesc: 'Intip sekilas panduan tata letak intuitif Khozan, dirancang khusus untuk meminimalkan gangguan visual.',
+            galleryTag: 'Tampilan Layar #',
+            testimonialsSub: 'TESTIMONI PENGGUNA',
+            testimonialsTitle: 'Cerita Keberhasilan Akademik',
+            testimonialsDesc: 'Dengarkan dari para siswa, guru madrasah, dan pembelajar mandiri yang menggunakan aplikasi kami.',
+            faqSub: 'PERTANYAAN YANG SERING DIAJUKAN',
+            faqTitle: 'Pertanyaan Umum',
+            faqDesc: 'Punya pertanyaan tentang rilis kami, penyimpanan lokal, atau integrasi API? Baca ringkasan kami.',
+            faq1Q: 'Apakah semua aplikasi buatan Khozan gratis diunduh?',
+            faq1A: 'Ya! Sebagian besar produk pendidikan dasar kami sepenuhnya gratis diunduh di Google Play Store. Fitur lanjutan atau pencadangan cloud multi-perangkat mungkin menawarkan versi premium.',
+            faq2Q: 'Bagaimana cara memesan aplikasi pembelajaran kustom?',
+            faq2A: 'Cukup gunakan formulir kontak di bawah atau kirim email langsung ke zanubah23@gmail.com. Kami sangat terbuka untuk mengembangkan sistem kustom untuk sekolah, universitas, atau yayasan.',
+            faq3Q: 'Apakah aplikasi Khozan aman untuk anak-anak?',
+            faq3A: 'Tentu saja. Kami mematuhi pedoman COPPA/perlindungan anak secara ketat. Aplikasi kami bebas dari iklan tidak pantas dan divalidasi langsung oleh Google Play Protect.',
+            faq4Q: 'Apakah aplikasi kosakata berfungsi tanpa internet?',
+            faq4A: 'Ya. Database kamus inti, panduan kaligrafi, dan rumus matematika disimpan langsung di perangkat menggunakan struktur SQLite ringan agar Anda tetap bisa belajar offline.',
+            contactSub: 'HUBUNGI KAMI',
+            contactTitle: 'Hubungi Pengembang Khozan',
+            contactDesc: 'Punya masukan tentang modul tata bahasa kami, permintaan fitur, atau ide kemitraan? Kirim pesan.',
+            contactLabelName: 'Nama Lengkap',
+            contactLabelEmail: 'Alamat Email',
+            contactLabelMsg: 'Pesan',
+            contactPlaceholderName: 'Masukkan nama Anda...',
+            contactPlaceholderEmail: 'anda@contoh.com',
+            contactPlaceholderMsg: 'Tulis rincian pesan Anda di sini...',
+            contactSendBtn: 'Kirim Pesan',
+            contactSending: 'Mengirim...',
+            contactSuccess: 'Pesan berhasil dikirim! Kami akan segera membalas email Anda.',
+            footerDesc: 'Membangun Aplikasi Pendidikan dengan Inovasi. Dibuat sepenuh hati untuk menghadirkan alat digital premium ke semua kelas.',
+            footerCopyright: '© 2026 Khozan Developer. Seluruh Hak Cipta Dilindungi.',
+            toastClose: 'Klik di mana saja untuk menutup'
+        }
+    },
+
+    apps: [
+        { 
+            id: 1, 
+            title: 'The theories of literature', 
+            category: 'humanities', 
+            rating: null,
+            desc_en: 'Explore various literary criticisms, theories, historical text contexts, and classical analysis methods.',
+            desc_id: 'Jelajahi berbagai kritik sastra, teori teks, konteks sejarah, dan metode analisis sastra klasik.',
+            tech: 'Flutter, Markdown Reader engine',
+            features_en: ['Structuralist analysis guides', 'Historical timeline of theories', 'Offline reading modes'],
+            features_id: ['Panduan analisis strukturalis', 'Garis waktu sejarah teori sastra', 'Mode membaca luring (offline)']
+        },
+        { 
+            id: 2, 
+            title: 'Kaidah Bahasa Arab', 
+            category: 'language', 
+            rating: '4.4',
+            desc_en: 'Master foundational and advanced Arabic grammar guidelines containing Nahwu and Sharaf with diagrams.',
+            desc_id: 'Kuasai kaidah tata bahasa Arab dasar hingga tingkat lanjut mencakup Nahwu dan Sharaf dengan diagram.',
+            tech: 'Kotlin Native, SQLite',
+            features_en: ['Comprehensive tasrif chart calculations', 'Dhamir & Harf interactive lookup', 'Self-assessment quizzes'],
+            features_id: ['Tabel tasrif komprehensif otomatis', 'Pencarian interaktif Dhamir & Harf', 'Kuis evaluasi mandiri']
+        },
+        { 
+            id: 3, 
+            title: 'Theoretical Physics', 
+            category: 'science', 
+            rating: null,
+            desc_en: 'Navigate complicated formulas of classical mechanics, quantum theory, relativity, and thermodynamics.',
+            desc_id: 'Pahami rumus-rumus rumit mekanika klasik, teori kuantum, relativitas, dan termodinamika.',
+            tech: 'Flutter, LaTeX Math Engine',
+            features_en: ['Step-by-step formula derivations', 'Interactive constant calculators', 'Interactive 2D vector visualizer'],
+            features_id: ['Penurunan rumus langkah-demi-langkah', 'Kalkulator konstanta fisika interaktif', 'Visualisasi vektor 2D interaktif']
+        },
+        { 
+            id: 4, 
+            title: 'General Economic Concepts', 
+            category: 'social', 
+            rating: null,
+            desc_en: 'Learn foundational microeconomics, macroeconomics, fiscal policies, and economic paradigms globally.',
+            desc_id: 'Pelajari dasar-dasar mikroekonomi, makroekonomi, kebijakan fiskal, dan paradigma ekonomi dunia.',
+            tech: 'Java Native, SQLite',
+            features_en: ['Interactive supply & demand curve builders', 'Encyclopedia of global economists', 'Term glossary index'],
+            features_id: ['Pembuat kurva penawaran & permintaan', 'Ensiklopedia ekonom global terkenal', 'Indeks glosarium istilah ekonomi']
+        },
+        { 
+            id: 5, 
+            title: 'Applied Mathematics', 
+            category: 'science', 
+            rating: null,
+            desc_en: 'An interactive mathematical companion for engineering calculus, numerical computations, and statistical modeling.',
+            desc_id: 'Pendamping matematika interaktif untuk kalkulus teknik, komputasi numerik, dan pemodelan statistik.',
+            tech: 'Flutter, MathJS engine integration',
+            features_en: ['Advanced matrix calculators', 'Linear regression plotting tools', 'Offline formula notebook'],
+            features_id: ['Kalkulator matriks tingkat lanjut', 'Alat pembuat grafik regresi linear', 'Buku catatan rumus luring']
+        },
+        { 
+            id: 6, 
+            title: 'Study of History', 
+            category: 'humanities', 
+            rating: null,
+            desc_en: 'A global historical index tracking ancient Mesopotamian civilizations, World Wars, and modern geological timelines.',
+            desc_id: 'Indeks sejarah global yang melacak peradaban kuno Mesopotamia, Perang Dunia, hingga linimasa geologis modern.',
+            tech: 'Kotlin, Room Database',
+            features_en: ['Interactive historical map paths', 'Famous speeches audio archive', 'Searchable world war registry'],
+            features_id: ['Rute peta sejarah interaktif', 'Arsip audio pidato bersejarah populer', 'Registri pencarian peristiwa perang dunia']
+        },
+        { 
+            id: 7, 
+            title: 'General Sociology Concepts', 
+            category: 'social', 
+            rating: null,
+            desc_en: 'Examine human social behavior, interaction dynamics, societal structures, social changes, and modern culture theories.',
+            desc_id: 'Pelajari perilaku sosial manusia, dinamika interaksi, struktur masyarakat, perubahan sosial, dan teori budaya.',
+            tech: 'Java, Local JSON',
+            features_en: ['Flashcards of social science thinkers', 'Case study reference libraries', 'Social stratification charts'],
+            features_id: ['Flashcard pemikir ilmu sosial terkenal', 'Perpustakaan studi kasus nyata', 'Bagan stratifikasi sosial interaktif']
+        },
+        { 
+            id: 8, 
+            title: 'Introduction to Anthropology', 
+            category: 'social', 
+            rating: null,
+            desc_en: 'Explore human evolutionary lineages, diverse archaeological findings, and global cultural variation patterns.',
+            desc_id: 'Jelajahi garis keturunan evolusi manusia, berbagai penemuan arkeologi, dan pola variasi budaya global.',
+            tech: 'Flutter, Local Cache engine',
+            features_en: ['Human skull lineage interactive index', 'Ethnographical case archives', 'Global culture quick quizzes'],
+            features_id: ['Indeks evolusi tengkorak manusia', 'Arsip kasus etnografi suku dunia', 'Kuis cepat budaya global']
+        },
+        { 
+            id: 9, 
+            title: 'General Psychology', 
+            category: 'social', 
+            rating: null,
+            desc_en: 'Delve into the complexities of human cognition, emotional intelligence, behavioral pattern science, and therapy types.',
+            desc_id: 'Dalami kompleksitas kognisi manusia, kecerdasan emosional, sains pola perilaku, dan jenis terapi psikologi.',
+            tech: 'Kotlin Native, Shared Preferences cache',
+            features_en: ['Interactive personality type assessments', 'Cognitive bias daily checklists', 'Sleep cycle tracking tools'],
+            features_id: ['Penilaian tipe kepribadian interaktif', 'Checklist bias kognitif harian', 'Alat pelacak siklus tidur']
+        },
+        { 
+            id: 10, 
+            title: 'Introduction to Philosophy', 
+            category: 'humanities', 
+            rating: null,
+            desc_en: 'Contemplate foundational existential debates, standard philosophical dialogues, logic formulations, and ancient ethics.',
+            desc_id: 'Renungkan perdebatan eksistensial dasar, dialog filosofis standar, formulasi logika, dan etika kuno.',
+            tech: 'Flutter, SQLite',
+            features_en: ['Philosophical school category filters', 'Socratic dialogue text guides', 'Daily philosophical quotes widget'],
+            features_id: ['Filter kategori mazhab filsafat', 'Panduan teks dialog Sokrates', 'Widget kutipan filsafat harian']
+        },
+        { 
+            id: 11, 
+            title: 'Philosophy Of Science', 
+            category: 'humanities', 
+            rating: null,
+            desc_en: 'Analyze epistemological scientific methodologies, logic limits, falsifiability criteria, and ethics in technology development.',
+            desc_id: 'Analisis metodologi ilmiah epistemologis, batasan logika, kriteria falsifikasi, dan etika perkembangan teknologi.',
+            tech: 'Java, Room Database',
+            features_en: ['Falsifiability mapping charts', 'Logic argumentation builders', 'Ethics case studies library'],
+            features_id: ['Bagan pemetaan falsifikasi sains', 'Penyusun argumentasi logika formal', 'Perpustakaan studi kasus etika']
+        },
+        { 
+            id: 12, 
+            title: 'Khat Arab', 
+            category: 'art', 
+            rating: '4.0',
+            desc_en: 'Learn calligraphy scripts including Naskh, Thuluth, and Diwani step-by-step with real ink angles.',
+            desc_id: 'Pelajari skrip kaligrafi termasuk Naskh, Thuluth, dan Diwani langkah demi langkah dengan sudut kuas presisi.',
+            tech: 'Flutter Canvas API',
+            features_en: ['Interactive touchscreen calligraphic brush', 'Grid reference guidelines overlay', 'Tracing modes for kids'],
+            features_id: ['Kuas kaligrafi interaktif layar sentuh', 'Garis panduan referensi grid', 'Mode menjiplak huruf untuk anak-anak']
+        },
+        { 
+            id: 13, 
+            title: 'Kaligrafi Arab', 
+            category: 'art', 
+            rating: '4.6',
+            desc_en: 'A premium virtual canvas platform to practice complex calligraphy designs, custom borders, and paint fills.',
+            desc_id: 'Platform kanvas virtual premium untuk melatih desain kaligrafi kompleks, ornamen batas, dan pewarnaan.',
+            tech: 'Kotlin Native, Canvas, SVG exporter',
+            features_en: ['Export sketches to high-quality SVG/PNG', '30+ Custom script templates', 'Custom stroke-width customizer'],
+            features_id: ['Ekspor sketsa ke SVG/PNG berkualitas tinggi', '30+ Templat skrip kustom', 'Kustomisasi lebar ketebalan kuas']
+        },
+        { 
+            id: 14, 
+            title: 'Learn Egyptian Arabic Phrasa', 
+            category: 'language', 
+            rating: null,
+            desc_en: 'Unlock conversational Egyptian dialect (Amiyah) used daily in Cairo with standard dialect audios.',
+            desc_id: 'Pahami dialek percakapan Mesir (Amiyah) yang digunakan sehari-hari di Kairo dengan audio dialek asli.',
+            tech: 'Flutter, ExoPlayer local streaming',
+            features_en: ['Cairo street vocabulary listings', 'Slow-motion audio playback speed', 'Essential market conversation scripts'],
+            features_id: ['Daftar kosakata jalanan populer Kairo', 'Pilihan kecepatan lambat pemutar audio', 'Skenario percakapan pasar yang penting']
+        },
+        { 
+            id: 15, 
+            title: 'Ungkapan Umum Bahasa Arab', 
+            category: 'language', 
+            rating: null,
+            desc_en: 'A vital reference for daily Arabic greetings, formal idioms, expressions, and traveler conversational templates.',
+            desc_id: 'Referensi penting untuk sapaan Arab harian, idiom formal, ekspresi, dan templat percakapan perjalanan.',
+            tech: 'Kotlin Native, Room',
+            features_en: ['Quick bookmark collections', 'Search in Arabic, Latin, or translation', 'Transliteration aids for beginners'],
+            features_id: ['Koleksi bookmark cepat', 'Cari dalam Arab, Latin, atau terjemahan', 'Bantuan transliterasi untuk pemula']
+        },
+        { 
+            id: 16, 
+            title: 'Bahasa Arab Amiyah', 
+            category: 'language', 
+            rating: '4.3',
+            desc_en: 'A comprehensive study of dialect variations used across the Levantine, Gulf, and North African regions.',
+            desc_id: 'Studi komprehensif tentang variasi dialek Arab yang digunakan di wilayah Syam, Teluk, dan Afrika Utara.',
+            tech: 'Flutter, Hive Database',
+            features_en: ['Interactive dialect comparison grids', 'Flashcards with spaced repetition algorithms', 'Dialect audio modules'],
+            features_id: ['Tabel perbandingan dialek interaktif', 'Flashcard dengan algoritma spaced-repetition', 'Modul audio dialek regional']
+        }
+    ],
+
+    get filteredApps() {
+        return this.apps.filter(app => {
+            const matchesCategory = this.activeCategory === 'all' || app.category === this.activeCategory;
+            const matchesSearch = app.title.toLowerCase().includes(this.searchQuery.toLowerCase()) || 
+                                  app.desc_en.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                                  app.desc_id.toLowerCase().includes(this.searchQuery.toLowerCase());
+            return matchesCategory && matchesSearch;
+        });
+    }
+}" :class="{ 'dark': darkMode }" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Khozan Developer | Building Smart Educational Apps for Everyone</title>
+    <meta name="description" content="Khozan develops innovative, user-friendly educational apps that help users learn more effectively anytime, anywhere. Download language tools, science apps, and humanities indexes.">
+    <meta name="keywords" content="Khozan, Khozan Developer, Educational Apps, Arabic Grammar, Theoretical Physics, Khat Arab, Amiyah Arabic, Mobile Learning, Language Apps">
+    <meta name="author" content="Khozan Developer">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khozan.dev/">
+    <meta property="og:title" content="Khozan Developer | Educational Apps & Tools">
+    <meta property="og:description" content="Khozan develops innovative, user-friendly educational apps that help users learn more effectively anytime, anywhere.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0F4CFF',
+                            orange: '#FF8A00',
+                            darkBg: '#030712',
+                            darkCard: '#111827',
+                            lightBg: '#F9FAFB',
+                            lightCard: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- AlpineJS Plugins & Core -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+        .glass {
+            background: rgba(15, 76, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #0F4CFF 0%, #00D1FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-orange {
+            background: linear-gradient(135deg, #FF8A00 0%, #FFC700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(15, 76, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 76, 255, 0.05) 1px, transparent 1px);
+        }
+        .dark .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1.5deg); }
+        }
+        .animate-float-slow {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-float-fast {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="transition-colors duration-300 font-sans text-slate-800 bg-brand-lightBg dark:text-slate-100 dark:bg-brand-darkBg bg-grid-pattern overflow-x-hidden">
+
+    <div class="absolute top-0 left-1/4 w-[350px] h-[350px] sm:w-[500px] sm:h-[500px] bg-brand-blue/10 dark:bg-brand-blue/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+    <div class="absolute top-1/3 right-10 w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] bg-brand-orange/10 dark:bg-brand-orange/15 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+
+    <header class="sticky top-0 z-50 w-full transition-all border-b border-slate-200/50 dark:border-slate-800/50 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="relative flex items-center justify-center w-12 h-12 bg-white dark:bg-brand-darkCard rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 overflow-visible transition-transform duration-300 group-hover:scale-110">
+                    <!-- Graduation Cap SVG Floating over Curly Braces -->
+                    <svg class="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#0F4CFF" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M6 10V14.5C6 16.5 8.5 18 12 18C15.5 18 18 16.5 18 14.5V10" stroke="#0F4CFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M22 7V13.5" stroke="#FF8A00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="22" cy="14" r="1.5" fill="#FF8A00"/>
+                    </svg>
+                    <!-- Curly brackets and K -->
+                    <span class="font-display font-bold text-xl flex items-center justify-center mt-2">
+                        <span class="text-brand-blue">{</span>
+                        <span class="text-brand-orange">K</span>
+                        <span class="text-brand-blue">}</span>
+                    </span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">KHOZAN</span>
+                    <span class="text-[10px] tracking-wider uppercase font-semibold text-brand-orange -mt-1">DEVELOPER</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium">
+                <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue transition-colors" x-text="translations[lang].navAbout">About</a>
+                <a href="#apps" class="text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue transition-colors" x-text="translations[lang].navApps">Our Apps</a>
+                <a href="#features" class="text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue transition-colors" x-text="translations[lang].navFeatures">Features</a>
+                <a href="#tech" class="text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue transition-colors" x-text="translations[lang].navTech">Tech Stack</a>
+                <a href="#faq" class="text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue transition-colors" x-text="translations[lang].navFaq">FAQ</a>
+            </nav>
+
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <!-- Theme Toggle Button -->
+                <button @click="darkMode = !darkMode" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all text-slate-500 dark:text-slate-400 focus:outline-none" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid" :class="darkMode ? 'fa-sun text-amber-400' : 'fa-moon text-indigo-600'"></i>
+                </button>
+                
+                <!-- Elegant Language Selector Dropdown -->
+                <div class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" class="flex items-center space-x-1 sm:space-x-2 px-3 py-2.5 border border-slate-200 dark:border-slate-800 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
+                        <i class="fa-solid fa-globe text-brand-blue"></i>
+                        <span class="uppercase font-mono" x-text="lang"></span>
+                        <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                    </button>
+                    <div x-show="open" @click.outside="open = false" class="absolute right-0 mt-2 w-36 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-brand-darkCard shadow-2xl overflow-hidden z-50 py-1" x-cloak>
+                        <button @click="lang = 'en'; open = false" class="w-full text-left px-4 py-2.5 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-between" :class="lang === 'en' ? 'text-brand-blue bg-brand-blue/5' : 'text-slate-700 dark:text-slate-300'">
+                            <span>English (EN)</span>
+                            <i class="fa-solid fa-check text-[10px]" x-show="lang === 'en'"></i>
+                        </button>
+                        <button @click="lang = 'id'; open = false" class="w-full text-left px-4 py-2.5 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-between" :class="lang === 'id' ? 'text-brand-blue bg-brand-blue/5' : 'text-slate-700 dark:text-slate-300'">
+                            <span>Bahasa (ID)</span>
+                            <i class="fa-solid fa-check text-[10px]" x-show="lang === 'id'"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contact CTA Button -->
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 h-11 font-semibold rounded-xl text-white bg-brand-blue hover:bg-blue-700 shadow-md shadow-brand-blue/20 hover:shadow-lg hover:shadow-brand-blue/30 transition-all transform active:scale-95 text-sm" x-text="translations[lang].navContact">
+                    Contact Us
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button @click="$dispatch('toggle-mobile-menu')" class="md:hidden p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu Panel -->
+        <div x-data="{ open: false }" @toggle-mobile-menu.window="open = !open" x-show="open" x-collapse x-cloak class="md:hidden border-t border-slate-200 dark:border-slate-800 glass px-4 py-4 space-y-3">
+            <a href="#about" @click="open = false" class="block px-4 py-2 rounded-lg font-medium hover:bg-brand-blue/10" x-text="translations[lang].navAbout">About</a>
+            <a href="#apps" @click="open = false" class="block px-4 py-2 rounded-lg font-medium hover:bg-brand-blue/10" x-text="translations[lang].navApps">Our Apps</a>
+            <a href="#features" @click="open = false" class="block px-4 py-2 rounded-lg font-medium hover:bg-brand-blue/10" x-text="translations[lang].navFeatures">Features</a>
+            <a href="#tech" @click="open = false" class="block px-4 py-2 rounded-lg font-medium hover:bg-brand-blue/10" x-text="translations[lang].navTech">Tech Stack</a>
+            <a href="#faq" @click="open = false" class="block px-4 py-2 rounded-lg font-medium hover:bg-brand-blue/10" x-text="translations[lang].navFaq">FAQ</a>
+            <a href="#contact" @click="open = false" class="block w-full text-center px-4 py-2.5 rounded-lg bg-brand-blue text-white font-semibold shadow-md" x-text="translations[lang].navContact">Contact Us</a>
+        </div>
+    </header>
+
+    <section class="relative pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase border border-brand-orange/20 bg-brand-orange/10 text-brand-orange">
+                        <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
+                        <span x-text="translations[lang].heroTagline">Learning & Innovation</span>
+                    </div>
+
+                    <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-tight text-slate-900 dark:text-white" x-text="translations[lang].heroTitle">
+                        Building Smart Educational Apps for Everyone
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed" x-text="translations[lang].heroDesc">
+                        Khozan develops innovative, user-friendly educational apps that help users learn more effectively anytime, anywhere.
+                    </p>
+
+                    <!-- Interactive Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#apps" class="w-full sm:w-auto inline-flex items-center justify-center px-8 h-14 font-semibold text-base rounded-2xl text-white bg-brand-blue hover:bg-blue-700 shadow-lg shadow-brand-blue/20 hover:shadow-brand-blue/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0 active:scale-95 group">
+                            <span x-text="translations[lang].heroExplore">Explore Apps</span>
+                            <i class="fa-solid fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center px-8 h-14 font-semibold text-base rounded-2xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-slate-700 dark:text-slate-200" x-text="translations[lang].heroContact">
+                            Contact Developer
+                        </a>
+                    </div>
+
+                    <!-- Badge Ratings & Social proof -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6 pt-8 border-t border-slate-200/60 dark:border-slate-800/60">
+                        <div class="flex items-center space-x-2">
+                            <div class="flex text-amber-500">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="font-bold text-slate-900 dark:text-white text-sm" x-text="translations[lang].heroRating">4.8/5 Play Store Rating</span>
+                        </div>
+                        <div class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
+                            <i class="fa-solid fa-download text-brand-orange mr-1.5"></i> <span x-text="translations[lang].heroDownloads">Downloaded by 50K+ users globally</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Graphic Mockup -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-blue/20 to-brand-orange/10 rounded-3xl blur-2xl transform -rotate-6 scale-95 -z-10"></div>
+                    
+                    <div class="relative w-full max-w-[400px] aspect-[4/5] bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl overflow-hidden p-6">
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                            </div>
+                            <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 font-mono">KHOZAN INTERACTIVE</span>
+                        </div>
+
+                        <!-- Mascot representing the character -->
+                        <div class="relative py-6 flex flex-col items-center justify-center">
+                            <!-- Floating tags -->
+                            <div class="absolute top-2 left-2 px-3 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-500 font-mono text-[10px] animate-float-slow">
+                                &lt;physics/&gt;
+                            </div>
+                            <div class="absolute top-10 right-2 px-3 py-1.5 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-500 font-mono text-[10px] animate-float-fast">
+                                Math:Calculus
+                            </div>
+                            <div class="absolute bottom-10 left-4 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 font-display text-[10px] animate-float-slow">
+                                Literature 📚
+                            </div>
+
+                            <!-- Vector representation of the Mascot wearing headphones & glasses -->
+                            <svg class="w-48 h-48 drop-shadow-xl" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M50 160C50 135 70 120 100 120C130 120 150 135 150 160V180H50V160Z" fill="#FF8A00"/>
+                                <path d="M100 120V145" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="100" cy="85" r="40" fill="#FFE0B2"/>
+                                <path d="M60 70C65 50 80 40 100 40C120 40 135 50 140 70C140 70 145 60 140 50C135 40 120 30 100 30C80 30 65 40 60 50C55 60 60 70 60 70Z" fill="#1E293B"/>
+                                <path d="M55 85C55 55 75 45 100 45C125 45 145 55 145 85" stroke="#0F4CFF" stroke-width="8" stroke-linecap="round"/>
+                                <rect x="48" y="75" width="12" height="25" rx="6" fill="#1E293B"/>
+                                <rect x="140" y="75" width="12" height="25" rx="6" fill="#1E293B"/>
+                                <path d="M140 90C130 105 110 105 110 105" stroke="#1E293B" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="110" cy="105" r="3" fill="#1E293B"/>
+                                <rect x="72" y="75" width="22" height="15" rx="4" stroke="#1E293B" stroke-width="3" fill="none"/>
+                                <rect x="106" y="75" width="22" height="15" rx="4" stroke="#1E293B" stroke-width="3" fill="none"/>
+                                <line x1="94" y1="82" x2="106" y2="82" stroke="#1E293B" stroke-width="3"/>
+                                <path d="M92 98C92 98 95 105 100 105C105 105 108 98 108 98" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="75" cy="92" r="4" fill="#FF8A00" opacity="0.3"/>
+                                <circle cx="125" cy="92" r="4" fill="#FF8A00" opacity="0.3"/>
+                            </svg>
+
+                            <!-- Mini dashboard metrics overlay -->
+                            <div class="mt-4 w-full bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-[10px] font-semibold text-slate-500">Live Dictionary API</span>
+                                    <span class="text-[10px] font-mono text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">ACTIVE</span>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <div class="h-2 w-3/4 bg-brand-blue/20 rounded-full"></div>
+                                    <div class="h-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white/40 dark:bg-brand-darkCard/40 border-y border-slate-200/60 dark:border-slate-800/60 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Edukatif -->
+                <div class="flex items-start space-x-3 sm:space-x-4">
+                    <div class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-2xl bg-brand-blue/10 text-brand-blue dark:bg-brand-blue/20">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-slate-900 dark:text-white text-xs sm:text-sm tracking-wider uppercase" x-text="translations[lang].philosophyEdu">EDUCATIONAL</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed" x-text="translations[lang].philosophyEduDesc">High-quality curriculum and learning standards designed for progress.</p>
+                    </div>
+                </div>
+
+                <!-- Praktis -->
+                <div class="flex items-start space-x-3 sm:space-x-4">
+                    <div class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-2xl bg-brand-orange/10 text-brand-orange dark:bg-brand-orange/20">
+                        <i class="fa-solid fa-mobile-screen-button text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-slate-900 dark:text-white text-xs sm:text-sm tracking-wider uppercase" x-text="translations[lang].philosophyPrac">PRACTICAL</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed" x-text="translations[lang].philosophyPracDesc">Learn anytime, anywhere with clean, highly intuitive interfaces.</p>
+                    </div>
+                </div>
+
+                <!-- Interaktif -->
+                <div class="flex items-start space-x-3 sm:space-x-4">
+                    <div class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-500 dark:bg-indigo-500/20">
+                        <i class="fa-solid fa-gamepad text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-slate-900 dark:text-white text-xs sm:text-sm tracking-wider uppercase" x-text="translations[lang].philosophyInt">INTERACTIVE</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed" x-text="translations[lang].philosophyIntDesc">Infused with gamification, quick quizzes, and interactive elements.</p>
+                    </div>
+                </div>
+
+                <!-- Bermanfaat -->
+                <div class="flex items-start space-x-3 sm:space-x-4">
+                    <div class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 dark:bg-emerald-500/20">
+                        <i class="fa-solid fa-heart text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-slate-900 dark:text-white text-xs sm:text-sm tracking-wider uppercase" x-text="translations[lang].philosophyBen">BENEFICIAL</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed" x-text="translations[lang].philosophyBenDesc">Lovingly constructed to directly support your academic success.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Story Column -->
+                <div class="lg:col-span-5 relative">
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-brand-blue/10 rounded-full blur-xl pointer-events-none"></div>
+                    <div class="relative bg-gradient-to-br from-brand-blue to-indigo-800 rounded-3xl p-8 text-white shadow-2xl overflow-hidden">
+                        <div class="absolute bottom-0 right-0 w-48 h-48 bg-brand-orange/30 rounded-full blur-3xl pointer-events-none"></div>
+                        
+                        <div class="relative space-y-6">
+                            <span class="text-xs font-bold uppercase tracking-widest text-brand-orange" x-text="translations[lang].aboutSub">ABOUT KHOZAN</span>
+                            <blockquote class="font-display text-lg sm:text-xl font-semibold leading-relaxed">
+                                "The best educational technology serves to democratize access, stimulate intellectual curiosity, and empower student independence universally."
+                            </blockquote>
+                            <div class="flex items-center space-x-3 pt-4 border-t border-white/20">
+                                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                                    <i class="fa-solid fa-code text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-sm">Khozan</p>
+                                    <p class="text-xs text-slate-300">Lead Independent Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Narrative Detail -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 text-brand-blue font-bold uppercase text-xs tracking-wider">
+                        <span x-text="translations[lang].aboutSub">ABOUT KHOZAN DEVELOPER</span>
+                    </div>
+                    <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 dark:text-white leading-tight" x-text="translations[lang].aboutTitle">
+                        Bringing Learning Revolutions Directly to Your Hand
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed" x-text="translations[lang].aboutDesc1">
+                        Khozan is an independent app developer dedicated to building modern technological solutions, smart educational systems, language learning assistants, and lightweight productivity tools.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed" x-text="translations[lang].aboutDesc2">
+                        We believe studying should be inspiring, not rigid or boring. Through clean modern UI/UX, fast cloud integrations, and interactive algorithms, we provide learners worldwide with premium educational ecosystems.
+                    </p>
+
+                    <!-- Features checklist -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-circle-check text-brand-blue text-lg flex-shrink-0"></i>
+                            <span class="font-semibold text-xs sm:text-sm" x-text="translations[lang].aboutBullet1">Specialized Android & Web Architecture</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-circle-check text-brand-blue text-lg flex-shrink-0"></i>
+                            <span class="font-semibold text-xs sm:text-sm" x-text="translations[lang].aboutBullet2">Interactive Learning & Algorithm Integration</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-circle-check text-brand-blue text-lg flex-shrink-0"></i>
+                            <span class="font-semibold text-xs sm:text-sm" x-text="translations[lang].aboutBullet3">Focus on Comprehensive Language Mastery</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-circle-check text-brand-blue text-lg flex-shrink-0"></i>
+                            <span class="font-semibold text-xs sm:text-sm" x-text="translations[lang].aboutBullet4">User-First Minimalist Designs</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-slate-100 dark:bg-brand-darkCard/50 border-y border-slate-200/50 dark:border-slate-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-blue" x-text="translations[lang].sandboxSub">Interactive Vocabulary Tool</span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 dark:text-white" x-text="translations[lang].sandboxTitle">Quick Arabic Vocabulary Lookup</h2>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-lg mx-auto" x-text="translations[lang].sandboxDesc">
+                Type a common word below to test our instant interactive translation engine.
+            </p>
+
+            <div x-data="{ 
+                inputWord: 'Buku', 
+                outputWord: 'كتاب (Kitaab)',
+                searching: false,
+                searchWord() {
+                    this.searching = true;
+                    setTimeout(() => {
+                        // A simple dictionary for the vocabulary lookup tool
+                        const dictionary = {
+                            'buku': 'كتاب (Kitaab)', 'book': 'كتاب (Kitaab)',
+                            'sekolah': 'مدرسة (Madrasah)', 'school': 'مدرسة (Madrasah)',
+                            'guru': 'مدرس (Mudarris)', 'teacher': 'مدرس (Mudarris)',
+                            'murid': 'طالب (Thaalib)', 'student': 'طالب (Thaalib)',
+                            'pulpen': 'قلم (Qalam)', 'pen': 'قلم (Qalam)',
+                            'meja': 'مكتب (Maktab)', 'desk': 'مكتب (Maktab)',
+                            'kursi': 'كرسي (Kursiyyun)', 'chair': 'كرسي (Kursiyyun)',
+                            'pintu': 'باب (Baab)', 'door': 'باب (Baab)',
+                            'halo': 'مرحباً (Marhaban)', 'hello': 'مرحباً (Marhaban)',
+                            'terima kasih': 'شكراً (Syukran)', 'thank you': 'شكراً (Syukran)',
+                            'pagi': 'صباح (Shabaah)', 'morning': 'صباح (Shabaah)'
+                        };
+                        const key = this.inputWord.toLowerCase().trim();
+                        if (key === '') {
+                            this.outputWord = '';
+                        } else {
+                            this.outputWord = dictionary[key] || 'Kata tidak ditemukan di kamus singkat ini (Word not found in quick dictionary)';
+                        }
+                        this.searching = false;
+                    }, 400); // Simulate a slight delay for search
+                }
+            }" class="glass border border-slate-300 dark:border-slate-700/80 rounded-2xl p-6 text-left space-y-4 max-w-xl mx-auto shadow-xl">
+                
+                <div class="space-y-2">
+                    <label class="text-xs font-semibold text-slate-500 dark:text-slate-400" x-text="translations[lang].sandboxInputLabel">Type an Indonesian/English word (e.g., Buku, Sekolah, Guru):</label>
+                    <div class="relative">
+                        <input type="text" x-model="inputWord" @keydown.enter="searchWord()" class="w-full h-12 pl-4 pr-32 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 font-semibold focus:ring-2 focus:ring-brand-blue text-slate-900 dark:text-white text-sm" placeholder="Type a word here...">
+                        <button @click="searchWord()" class="absolute right-2 top-2 h-8 px-4 bg-brand-blue hover:bg-blue-600 text-white rounded-lg text-xs font-bold transition-colors" x-text="translations[lang].sandboxSend">
+                            Translate
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400" x-text="translations[lang].sandboxOutputLabel">Arabic Translation:</span>
+                        <span x-show="searching" class="text-xs text-brand-orange animate-pulse flex items-center">
+                            <i class="fa-solid fa-spinner animate-spin mr-1"></i> <span x-text="translations[lang].sandboxProcessing">Searching...</span>
+                        </span>
+                    </div>
+                    <div class="p-4 bg-slate-200/50 dark:bg-slate-900/50 rounded-xl min-h-[50px] flex items-center justify-end text-right">
+                        <p class="font-display text-lg text-brand-blue dark:text-amber-400 font-bold" x-text="outputWord"></p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-1 items-center">
+                    <span class="text-[10px] text-slate-500 font-semibold" x-text="translations[lang].sandboxQuick">Quick Try:</span>
+                    <button @click="inputWord = 'Buku'; searchWord()" class="text-[10px] bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 px-2 py-1 rounded-md font-mono">Buku</button>
+                    <button @click="inputWord = 'Sekolah'; searchWord()" class="text-[10px] bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 px-2 py-1 rounded-md font-mono">Sekolah</button>
+                    <button @click="inputWord = 'Guru'; searchWord()" class="text-[10px] bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 px-2 py-1 rounded-md font-mono">Guru</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apps" class="py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center space-y-4 max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-orange" x-text="translations[lang].appsSub">Our Complete Portfolio</span>
+                <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 dark:text-white" x-text="translations[lang].appsTitle">Apps Developed by Khozan</h2>
+                <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm" x-text="translations[lang].appsDesc">
+                    Browse through our specialized educational suite including advanced sciences, language reference materials, and humanities guides.
+                </p>
+            </div>
+
+            <!-- Interactive App Search & Filtering Controls -->
+            <div class="max-w-5xl mx-auto mb-10 space-y-4">
+                <div class="relative max-w-md mx-auto">
+                    <input type="text" x-model="searchQuery" :placeholder="translations[lang].appsSearchPlaceholder" class="w-full h-11 pl-10 pr-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-brand-darkCard focus:outline-none focus:ring-2 focus:ring-brand-blue text-sm text-slate-900 dark:text-white">
+                    <div class="absolute left-3.5 top-3.5 text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-2 pt-2">
+                    <button @click="activeCategory = 'all'" :class="activeCategory === 'all' ? 'bg-brand-blue text-white' : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300'" class="px-4 py-2 rounded-xl text-xs font-semibold transition-all" x-text="translations[lang].appsFilterAll">All Categories</button>
+                    <button @click="activeCategory = 'language'" :class="activeCategory === 'language' ? 'bg-brand-blue text-white' : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300'" class="px-4 py-2 rounded-xl text-xs font-semibold transition-all" x-text="translations[lang].appsFilterLang">Languages</button>
+                    <button @click="activeCategory = 'science'" :class="activeCategory === 'science' ? 'bg-brand-blue text-white' : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300'" class="px-4 py-2 rounded-xl text-xs font-semibold transition-all" x-text="translations[lang].appsFilterScience">Science & Math</button>
+                    <button @click="activeCategory = 'social'" :class="activeCategory === 'social' ? 'bg-brand-blue text-white' : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300'" class="px-4 py-2 rounded-xl text-xs font-semibold transition-all" x-text="translations[lang].appsFilterSocial">Social Sciences</button>
+                    <button @click="activeCategory = 'humanities'" :class="activeCategory === 'humanities' ? 'bg-brand-blue text-white' : 'bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300'" class="px-4 py-2 rounded-xl text-xs font-semibold transition-all" x-text="translations[lang].appsFilterSocial">Humanities & Art</button>
+                </div>
+            </div>
+
+            <!-- Apps Dynamic Render Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <template x-for="app in filteredApps" :key="app.id">
+                    <div class="group relative bg-white dark:bg-brand-darkCard rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold" 
+                                     :class="{
+                                         'bg-brand-blue/10 text-brand-blue': app.category === 'language',
+                                         'bg-pink-500/10 text-pink-500': app.category === 'science',
+                                         'bg-indigo-500/10 text-indigo-500': app.category === 'social',
+                                         'bg-emerald-500/10 text-emerald-500': app.category === 'humanities',
+                                         'bg-brand-orange/10 text-brand-orange': app.category === 'art'
+                                     }">
+                                    <span x-text="app.title[0]"></span>
+                                </div>
+                                <div class="flex items-center space-x-1" x-show="app.rating !== null">
+                                    <i class="fa-solid fa-star text-amber-500 text-xs"></i>
+                                    <span class="text-xs font-bold text-slate-700 dark:text-slate-300" x-text="app.rating"></span>
+                                </div>
+                            </div>
+
+                            <h3 class="font-display font-bold text-base text-slate-900 dark:text-white group-hover:text-brand-blue transition-colors line-clamp-1" x-text="app.title"></h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 mb-4 leading-relaxed line-clamp-3" x-text="lang === 'en' ? app.desc_en : app.desc_id"></p>
+                        </div>
+
+                        <div class="flex items-center space-x-2 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+                            <!-- Google Play Direct Anchor -->
+                            <a href="https://play.google.com/store/apps/dev?id=8702480495324756176" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center h-9 px-3 rounded-xl text-[11px] font-bold text-white bg-brand-blue hover:bg-blue-700 transition-colors">
+                                <i class="fa-brands fa-google-play mr-1"></i> <span x-text="translations[lang].appsGooglePlayBtn">Google Play</span>
+                            </a>
+                            <!-- Open detail dynamic modal inside page -->
+                            <button @click="activeAppDetail = app" class="inline-flex items-center justify-center h-9 px-3 rounded-xl text-[11px] font-bold border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors" x-text="translations[lang].appsDetailBtn">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Bottom CTA pointing to global play store dev profile -->
+            <div class="text-center pt-12">
+                <a href="https://play.google.com/store/apps/dev?id=8702480495324756176" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center h-12 px-6 rounded-2xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold text-xs sm:text-sm hover:opacity-90 transition-opacity space-x-2 shadow-lg">
+                    <i class="fa-brands fa-google-play"></i>
+                    <span x-text="translations[lang].appsDevProfileBtn">View Play Store Developer Profile</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <div x-show="activeAppDetail !== null" class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center px-4" x-cloak>
+        <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" @click="activeAppDetail = null"></div>
+
+        <div class="relative bg-white dark:bg-brand-darkCard rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-700/80 overflow-hidden transform transition-all z-10"
+             x-transition:enter="ease-out duration-300"
+             x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+             x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+             x-transition:leave="ease-in duration-200"
+             x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+             x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+            
+            <div class="flex justify-between items-start pb-4 border-b border-slate-100 dark:border-slate-800">
+                <div class="space-y-1">
+                    <h3 class="font-display font-extrabold text-xl text-brand-blue dark:text-amber-400" x-text="activeAppDetail?.title"></h3>
+                    <div class="flex items-center space-x-1" x-show="activeAppDetail?.rating !== null">
+                        <i class="fa-solid fa-star text-amber-500 text-xs"></i>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400" x-text="activeAppDetail?.rating + ' (Google Play)'"></span>
+                    </div>
+                </div>
+                <button @click="activeAppDetail = null" class="p-1 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="py-6 space-y-4">
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed" x-text="lang === 'en' ? activeAppDetail?.desc_en : activeAppDetail?.desc_id"></p>
+                
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase text-brand-orange tracking-wider">Engine Stack / Technology</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-mono" x-text="activeAppDetail?.tech"></p>
+                </div>
+
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase text-brand-orange tracking-wider mb-2">Key Highlights</h4>
+                    <ul class="space-y-1.5">
+                        <template x-for="feat in (lang === 'en' ? activeAppDetail?.features_en : activeAppDetail?.features_id) || []">
+                            <li class="flex items-center text-xs text-slate-600 dark:text-slate-300">
+                                <i class="fa-solid fa-circle-check text-brand-blue mr-2"></i>
+                                <span x-text="feat"></span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+                <a href="https://play.google.com/store/apps/dev?id=8702480495324756176" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-brand-blue hover:bg-blue-700 text-white font-semibold text-xs rounded-xl transition-all">
+                    Download on Google Play Store
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section id="features" class="py-20 md:py-28 bg-white/40 dark:bg-brand-darkCard/20 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center space-y-4 max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-blue" x-text="translations[lang].featuresSub">PREMIUM QUALITY</span>
+                <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 dark:text-white" x-text="translations[lang].featuresTitle">Engineering the Future of Learning</h2>
+                <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm" x-text="translations[lang].featuresDesc">
+                    We don't just write code. We formulate optimized architectures for seamless educational delivery.
+                </p>
+            </div>
+
+            <!-- Features Grid layout -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Feature 1 -->
+                <div class="p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-blue/10 text-brand-blue flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white" x-text="translations[lang].feature1Title">Educational Focus</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed" x-text="translations[lang].feature1Desc">Structured curriculum mapping tailored for global educational standards.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-2xl bg-pink-500/10 text-pink-500 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white" x-text="translations[lang].feature2Title">Smart Algorithms</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed" x-text="translations[lang].feature2Desc">Adaptive learning curves powered by cutting-edge interactive algorithms.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-orange/10 text-brand-orange flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white" x-text="translations[lang].feature3Title">Modern UI/UX</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed" x-text="translations[lang].feature3Desc">Beautiful responsive frameworks utilizing elegant visual micro-interactions.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-cloud-sun-rain"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white" x-text="translations[lang].feature4Title">Offline Capability</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed" x-text="translations[lang].feature4Desc">Save network bandwidth with secure, local, high-speed cached databases.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white" x-text="translations[lang].feature5Title">Cloud Sync</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed" x-text="translations[lang].feature5Desc">Safeguard your progress. Seamlessly sync history across different screen sizes.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-face-smile"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white" x-text="translations[lang].feature6Title">Simple Ergonomics</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed" x-text="translations[lang].feature6Desc">Zero complicated setup. Install the app and start studying immediately.</p>
+                </div>
+
+                <!-- Feature 7 -->
+                <div class="p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-2xl bg-violet-500/10 text-violet-500 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white" x-text="translations[lang].feature7Title">High Performance</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed" x-text="translations[lang].feature7Desc">Super lightweight codes optimized to run fluidly even on budget hardware.</p>
+                </div>
+
+                <!-- Feature 8 -->
+                <div class="p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white" x-text="translations[lang].feature8Title">Strict Security</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed" x-text="translations[lang].feature8Desc">Compliant with child safety guidelines. Total privacy encryption of study history.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-28" x-data="{ 
+        hasScrolledIntoView: false,
+        stats: { apps: 0, downloads: 0, rating: 0, users: 0 },
+        animateCounters() {
+            if (this.hasScrolledIntoView) return;
+            this.hasScrolledIntoView = true;
+            
+            // Apps Counter animate to 16
+            let a = 0; let intervalA = setInterval(() => { if (a < 16) { a++; this.stats.apps = a; } else { clearInterval(intervalA); } }, 80);
+            
+            // Downloads Counter animate to 50
+            let d = 0; let intervalD = setInterval(() => { if (d < 50) { d += 2; this.stats.downloads = d; } else { this.stats.downloads = 50; clearInterval(intervalD); } }, 40);
+            
+            // Users Counter animate to 100
+            let u = 0; let intervalU = setInterval(() => { if (u < 100) { u += 4; this.stats.users = u; } else { this.stats.users = 100; clearInterval(intervalU); } }, 30);
+        }
+    }" @scroll.window.throttle="
+        let rect = $el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+            animateCounters();
+        }
+    ">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative bg-gradient-to-br from-brand-blue to-indigo-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl overflow-hidden">
+                <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                <div class="absolute -top-12 -right-12 w-64 h-64 bg-brand-orange/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-4 text-center lg:text-left">
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-orange" x-text="translations[lang].statsSub">PROVEN TRACTION</span>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-4xl" x-text="translations[lang].statsTitle">Our Growth in Numbers</h2>
+                        <p class="text-slate-300 text-xs sm:text-sm max-w-sm mx-auto lg:mx-0" x-text="translations[lang].statsDesc">
+                            Building educational resources that scale to meet the needs of modern learners.
+                        </p>
+                    </div>
+
+                    <!-- Animated Stats Counters Grid -->
+                    <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+                        <div class="p-4 bg-white/10 rounded-2xl border border-white/10 backdrop-blur-sm">
+                            <p class="font-display font-extrabold text-2xl sm:text-4xl text-brand-orange" x-text="stats.apps + '+'">16+</p>
+                            <p class="text-[10px] sm:text-xs text-slate-300 font-semibold mt-1" x-text="translations[lang].statsApps">Active Apps</p>
+                        </div>
+                        <div class="p-4 bg-white/10 rounded-2xl border border-white/10 backdrop-blur-sm">
+                            <p class="font-display font-extrabold text-2xl sm:text-4xl text-brand-orange" x-text="stats.downloads + 'K+'">50K+</p>
+                            <p class="text-[10px] sm:text-xs text-slate-300 font-semibold mt-1" x-text="translations[lang].statsDownloads">Total Downloads</p>
+                        </div>
+                        <div class="p-4 bg-white/10 rounded-2xl border border-white/10 backdrop-blur-sm">
+                            <p class="font-display font-extrabold text-2xl sm:text-4xl text-brand-orange">4.8★</p>
+                            <p class="text-[10px] sm:text-xs text-slate-300 font-semibold mt-1" x-text="translations[lang].statsRating">Average Rating</p>
+                        </div>
+                        <div class="p-4 bg-white/10 rounded-2xl border border-white/10 backdrop-blur-sm">
+                            <p class="font-display font-extrabold text-2xl sm:text-4xl text-brand-orange" x-text="stats.users + 'K+'">100K+</p>
+                            <p class="text-[10px] sm:text-xs text-slate-300 font-semibold mt-1" x-text="translations[lang].statsUsers">Monthly Active Users</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech" class="py-20 bg-white/40 dark:bg-brand-darkCard/20 glass border-y border-slate-200/50 dark:border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-orange" x-text="translations[lang].techSub">MODERN STACK</span>
+                <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 dark:text-white" x-text="translations[lang].techTitle">Robust Foundations</h2>
+                <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm" x-text="translations[lang].techDesc">
+                    We utilize safe, fast, and modern software engines to keep our apps reliable.
+                </p>
+            </div>
+
+            <!-- Tech Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <div class="flex flex-col items-center justify-center p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:border-brand-blue/30 transition-all group">
+                    <i class="fa-solid fa-code text-3xl text-brand-blue mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-semibold text-xs sm:text-sm">Flutter</span>
+                    <span class="text-[9px] text-slate-400 mt-1 uppercase font-mono">Cross-Platform</span>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:border-brand-blue/30 transition-all group">
+                    <i class="fa-brands fa-android text-3xl text-emerald-500 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-semibold text-xs sm:text-sm">Android SDK</span>
+                    <span class="text-[9px] text-slate-400 mt-1 uppercase font-mono">Native Core</span>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:border-brand-blue/30 transition-all group">
+                    <i class="fa-solid fa-database text-3xl text-amber-500 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-semibold text-xs sm:text-sm">SQLite</span>
+                    <span class="text-[9px] text-slate-400 mt-1 uppercase font-mono">Local Storage</span>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:border-brand-blue/30 transition-all group">
+                    <i class="fa-solid fa-laptop-code text-3xl text-violet-500 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-semibold text-xs sm:text-sm">Kotlin</span>
+                    <span class="text-[9px] text-slate-400 mt-1 uppercase font-mono">Modern JVM</span>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:border-brand-blue/30 transition-all group">
+                    <i class="fa-brands fa-java text-3xl text-red-500 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-semibold text-xs sm:text-sm">Java</span>
+                    <span class="text-[9px] text-slate-400 mt-1 uppercase font-mono">Robust Legacy</span>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:border-brand-blue/30 transition-all group">
+                    <i class="fa-solid fa-brain text-3xl text-pink-500 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-semibold text-xs sm:text-sm">Logic Engine</span>
+                    <span class="text-[9px] text-slate-400 mt-1 uppercase font-mono">Custom Algorithms</span>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:border-brand-blue/30 transition-all group">
+                    <i class="fa-solid fa-bolt text-3xl text-brand-orange mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-semibold text-xs sm:text-sm">Native APIs</span>
+                    <span class="text-[9px] text-slate-400 mt-1 uppercase font-mono">Performance Tools</span>
+                </div>
+                <div class="flex flex-col items-center justify-center p-6 bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:border-brand-blue/30 transition-all group">
+                    <i class="fa-solid fa-palette text-3xl text-slate-700 dark:text-slate-200 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <span class="font-semibold text-xs sm:text-sm">Canvas Engine</span>
+                    <span class="text-[9px] text-slate-400 mt-1 uppercase font-mono">Visual Rendering</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-blue" x-text="translations[lang].gallerySub">PREMIUM USER INTERFACES</span>
+                <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 dark:text-white" x-text="translations[lang].galleryTitle">App Screen Gallery</h2>
+                <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm" x-text="translations[lang].galleryDesc">
+                    Sneak peek of Khozan\'s intuitive layout guidelines, designed to minimize visual distraction.
+                </p>
+            </div>
+
+            <!-- Carousel Slider Interface Wrapper using AlpineJS -->
+            <div x-data="{ 
+                activeSlide: 0,
+                slides: [
+                    { title_en: 'Grammar Index Interface', title_id: 'Antarmuka Indeks Tata Bahasa', desc_en: 'Beautifully categorized charts helping you lookup difficult linguistic constraints within seconds.', desc_id: 'Tabel terstruktur rapi membantu Anda mencari rincian tata bahasa tersulit dalam hitungan detik.', icon: '🏆' },
+                    { title_en: 'Physics Formula Board', title_id: 'Papan Rumus Fisika Teoritis', desc_en: 'Fitted mathematical notations formatted directly through high performance local rendering layouts.', desc_id: 'Notasi matematika yang pas dan diformat langsung melalui tata letak render lokal berkinerja tinggi.', icon: '💻' },
+                    { title_en: 'Calligraphy Trace Guides', title_id: 'Panduan Jiplak Kaligrafi', desc_en: 'Practice diverse classical calligraphic scripts with instant touch thickness adjustment algorithms.', desc_id: 'Latih berbagai tulisan kaligrafi klasik dengan algoritma penyesuaian ketebalan sentuhan instan.', icon: '📚' }
+                ],
+                next() { this.activeSlide = (this.activeSlide + 1) % this.slides.length },
+                prev() { this.activeSlide = (this.activeSlide - 1 + this.slides.length) % this.slides.length }
+            }" class="max-w-4xl mx-auto relative">
+                
+                <div class="relative overflow-hidden bg-white dark:bg-brand-darkCard rounded-3xl border border-slate-200 dark:border-slate-800 p-8 sm:p-12 shadow-xl min-h-[350px] flex flex-col justify-between">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-4 flex justify-center">
+                            <div class="w-36 h-36 rounded-full bg-brand-blue/10 flex items-center justify-center text-6xl shadow-inner animate-pulse">
+                                <span x-text="slides[activeSlide].icon"></span>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-8 space-y-4 text-center md:text-left">
+                            <div class="inline-flex px-3 py-1 bg-brand-orange/10 border border-brand-orange/20 rounded-full text-xs font-bold text-brand-orange">
+                                <span x-text="translations[lang].galleryTag">Mockup Screen #</span><span x-text="activeSlide + 1"></span>
+                            </div>
+                            <h3 class="font-display font-extrabold text-xl sm:text-2xl text-slate-900 dark:text-white" x-text="lang === 'en' ? slides[activeSlide].title_en : slides[activeSlide].title_id"></h3>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed" x-text="lang === 'en' ? slides[activeSlide].desc_en : slides[activeSlide].desc_id"></p>
+                        </div>
+                    </div>
+
+                    <!-- Slide controls -->
+                    <div class="flex items-center justify-between pt-8 border-t border-slate-100 dark:border-slate-800 mt-6">
+                        <div class="flex space-x-1.5">
+                            <template x-for="(s, index) in slides">
+                                <button @click="activeSlide = index" class="w-8 h-2.5 rounded-full transition-all duration-300" :class="activeSlide === index ? 'bg-brand-blue' : 'bg-slate-300 dark:bg-slate-700'"></button>
+                            </template>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button @click="prev()" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" aria-label="Previous Slide">
+                                <i class="fa-solid fa-chevron-left text-sm"></i>
+                            </button>
+                            <button @click="next()" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" aria-label="Next Slide">
+                                <i class="fa-solid fa-chevron-right text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-28 bg-white/40 dark:bg-brand-darkCard/20 glass border-t border-slate-200/60 dark:border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-orange" x-text="translations[lang].testimonialsSub">USER TESTIMONIALS</span>
+                <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 dark:text-white" x-text="translations[lang].testimonialsTitle">Stories of Academic Success</h2>
+                <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm" x-text="translations[lang].testimonialsDesc">
+                    Hear from students, madrasah teachers, and self-taught learners using our software suite.
+                </p>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Testimonial 1 -->
+                <div class="bg-white dark:bg-brand-darkCard p-6 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow relative">
+                    <span class="absolute top-6 right-6 text-slate-200 dark:text-slate-800 text-5xl font-serif">“</span>
+                    <div class="flex text-amber-500 mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6" x-show="lang === 'en'">
+                        "The Arabic grammar layouts are highly visual! Having tables directly inside my pocket companion has completely transformed my daily classroom preparation workflows."
+                    </p>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6" x-show="lang === 'id'">
+                        "Tampilan tata bahasa Arabnya sangat visual! Memiliki tabel rujukan langsung di saku saya benar-benar mengubah alur persiapan mengajar kelas saya setiap hari."
+                    </p>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <div class="w-10 h-10 rounded-full bg-brand-blue/10 flex items-center justify-center font-bold text-brand-blue">HA</div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-900 dark:text-white">Hasan Asy'ari</p>
+                            <p class="text-[10px] text-slate-400">Madrasah Language Educator</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white dark:bg-brand-darkCard p-6 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow relative">
+                    <span class="absolute top-6 right-6 text-slate-200 dark:text-slate-800 text-5xl font-serif">“</span>
+                    <div class="flex text-amber-500 mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6" x-show="lang === 'en'">
+                        "I use the Calligraphy app on my tablet with a stylus. The brush pressure simulation is so smooth and realistic, it is perfect for studying different scripts offline."
+                    </p>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6" x-show="lang === 'id'">
+                        "Saya menggunakan aplikasi Kaligrafi di tablet saya dengan stylus. Simulasi tekanan kuasnya sangat halus dan realistis, sangat cocok untuk melatih berbagai tulisan luring."
+                    </p>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center font-bold text-emerald-500">RM</div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-900 dark:text-white">Rina Mutia</p>
+                            <p class="text-[10px] text-slate-400">Design Student</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white dark:bg-brand-darkCard p-6 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-shadow relative">
+                    <span class="absolute top-6 right-6 text-slate-200 dark:text-slate-800 text-5xl font-serif">“</span>
+                    <div class="flex text-amber-500 mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6" x-show="lang === 'en'">
+                        "The Theoretical Physics formula notebooks saved my physics exams last semester. The step-by-step mathematical breakdowns are incredibly logical and clean."
+                    </p>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6" x-show="lang === 'id'">
+                        "Buku rumus Fisika Teoritis menyelamatkan ujian semester saya kemarin. Penurunan rumusnya dijabarkan secara bertahap dengan sangat rapi dan logis."
+                    </p>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <div class="w-10 h-10 rounded-full bg-brand-orange/10 flex items-center justify-center font-bold text-brand-orange">FP</div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-900 dark:text-white">Farhan Prasetyo</p>
+                            <p class="text-[10px] text-slate-400">Engineering Undergraduate</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 md:py-28" x-data="{ activeFaq: null }">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-blue" x-text="translations[lang].faqSub">FREQUENTLY ASKED QUESTIONS</span>
+                <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 dark:text-white" x-text="translations[lang].faqTitle">FAQ</h2>
+                <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm" x-text="translations[lang].faqDesc">
+                    Got questions about our releases, local storage, or API integrations? Read our summary.
+                </p>
+            </div>
+
+            <!-- Accordion list -->
+            <div class="space-y-4">
+                
+                <div class="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-brand-darkCard">
+                    <button @click="activeFaq = (activeFaq === 1 ? null : 1)" class="w-full px-6 py-5 text-left font-semibold text-xs sm:text-base text-slate-900 dark:text-white flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                        <span x-text="translations[lang].faq1Q">Are all applications by Khozan free to download?</span>
+                        <i class="fa-solid transition-transform duration-200" :class="activeFaq === 1 ? 'fa-minus text-brand-blue' : 'fa-plus'"></i>
+                    </button>
+                    <div x-show="activeFaq === 1" x-collapse class="px-6 pb-5 text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4" x-text="translations[lang].faq1A">
+                        Yes! The majority of our foundational educational products are completely free to download on the Google Play Store.
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-brand-darkCard">
+                    <button @click="activeFaq = (activeFaq === 2 ? null : 2)" class="w-full px-6 py-5 text-left font-semibold text-xs sm:text-base text-slate-900 dark:text-white flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                        <span x-text="translations[lang].faq2Q">How can we order a custom learning application?</span>
+                        <i class="fa-solid transition-transform duration-200" :class="activeFaq === 2 ? 'fa-minus text-brand-blue' : 'fa-plus'"></i>
+                    </button>
+                    <div x-show="activeFaq === 2" x-collapse class="px-6 pb-5 text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4" x-text="translations[lang].faq2A">
+                        Simply use the contact form at the bottom of this page or email us directly at zanubah23@gmail.com.
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-brand-darkCard">
+                    <button @click="activeFaq = (activeFaq === 3 ? null : 3)" class="w-full px-6 py-5 text-left font-semibold text-xs sm:text-base text-slate-900 dark:text-white flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                        <span x-text="translations[lang].faq3Q">Are Khozan apps safe for young children?</span>
+                        <i class="fa-solid transition-transform duration-200" :class="activeFaq === 3 ? 'fa-minus text-brand-blue' : 'fa-plus'"></i>
+                    </button>
+                    <div x-show="activeFaq === 3" x-collapse class="px-6 pb-5 text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4" x-text="translations[lang].faq3A">
+                        Absolutely. We follow strict COPPA/child protection guidelines.
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-brand-darkCard">
+                    <button @click="activeFaq = (activeFaq === 4 ? null : 4)" class="w-full px-6 py-5 text-left font-semibold text-xs sm:text-base text-slate-900 dark:text-white flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                        <span x-text="translations[lang].faq4Q">Do the vocabulary applications work without internet?</span>
+                        <i class="fa-solid transition-transform duration-200" :class="activeFaq === 4 ? 'fa-minus text-brand-blue' : 'fa-plus'"></i>
+                    </button>
+                    <div x-show="activeFaq === 4" x-collapse class="px-6 pb-5 text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4" x-text="translations[lang].faq4A">
+                        Yes. Core dictionary databases, calligraphy guides, and formula indices are stored directly on the device.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 md:py-28 bg-white/40 dark:bg-brand-darkCard/20 glass border-t border-slate-200/60 dark:border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Contact Info Column Left -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="space-y-4 text-center lg:text-left">
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-orange" x-text="translations[lang].contactSub">GET IN TOUCH</span>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 dark:text-white leading-tight" x-text="translations[lang].contactTitle">Contact Developer Khozan</h2>
+                        <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm" x-text="translations[lang].contactDesc">
+                            Have feedback on our grammar modules, feature requests, or partnership ideas? Send a message.
+                        </p>
+                    </div>
+
+                    <!-- Direct Developer Anchor badges -->
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 p-4 rounded-2xl bg-white dark:bg-brand-darkCard border border-slate-200/60 dark:border-slate-800/60 shadow-sm">
+                            <div class="flex-shrink-0 w-10 h-10 bg-brand-blue/10 text-brand-blue rounded-xl flex items-center justify-center">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Official Email</p>
+                                <a href="mailto:zanubah23@gmail.com" class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white hover:text-brand-blue transition-colors">zanubah23@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 rounded-2xl bg-white dark:bg-brand-darkCard border border-slate-200/60 dark:border-slate-800/60 shadow-sm">
+                            <div class="flex-shrink-0 w-10 h-10 bg-brand-orange/10 text-brand-orange rounded-xl flex items-center justify-center">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Web Portal</p>
+                                <a href="https://khozan.github.io/khozandeveloper/" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white hover:text-brand-orange transition-colors break-all">khozan.github.io/khozandeveloper/</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 rounded-2xl bg-white dark:bg-brand-darkCard border border-slate-200/60 dark:border-slate-800/60 shadow-sm">
+                            <div class="flex-shrink-0 w-10 h-10 bg-indigo-500/10 text-indigo-500 rounded-xl flex items-center justify-center">
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-slate-400 uppercase font-bold tracking-wider">GitHub Org</p>
+                                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white hover:text-indigo-500 transition-colors">github.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 rounded-2xl bg-white dark:bg-brand-darkCard border border-slate-200/60 dark:border-slate-800/60 shadow-sm">
+                            <div class="flex-shrink-0 w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center">
+                                <i class="fa-brands fa-google-play"></i>
+                            </div>
+                            <div>
+                                <p class="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Google Play Profile</p>
+                                <a href="https://play.google.com/store/apps/dev?id=8702480495324756176" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white hover:text-emerald-500 transition-colors">Khozan Play Store Suite</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Card Column Right -->
+                <div class="lg:col-span-7 bg-white dark:bg-brand-darkCard rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200 dark:border-slate-800/80"
+                     x-data="{ 
+                         nama: '', 
+                         email: '', 
+                         pesan: '',
+                         loading: false,
+                         handleSubmit() {
+                             if (!this.nama || !this.email || !this.pesan) {
+                                 toastMsg = lang === 'en' ? 'Please fill out all mandatory fields.' : 'Maaf, harap isi semua bidang isian.';
+                                 showToast = true;
+                                 return;
+                             }
+                             this.loading = true;
+                             setTimeout(() => {
+                                 toastMsg = lang === 'en' ? 'Message sent successfully! We will get back to you soon.' : 'Pesan berhasil dikirim! Kami akan segera membalas email Anda.';
+                                 showToast = true;
+                                 this.nama = '';
+                                 this.email = '';
+                                 this.pesan = '';
+                                 this.loading = false;
+                             }, 1000);
+                         }
+                     }">
+                    <form @submit.prevent="handleSubmit()" class="space-y-6">
+                        <div class="space-y-2">
+                            <label for="frm_nama" class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400" x-text="translations[lang].contactLabelName">Full Name</label>
+                            <input id="frm_nama" type="text" x-model="nama" :placeholder="translations[lang].contactPlaceholderName" class="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue text-sm transition-all text-slate-900 dark:text-white">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="frm_email" class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400" x-text="translations[lang].contactLabelEmail">Email Address</label>
+                            <input id="frm_email" type="email" x-model="email" :placeholder="translations[lang].contactPlaceholderEmail" class="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue text-sm transition-all text-slate-900 dark:text-white">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="frm_pesan" class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400" x-text="translations[lang].contactLabelMsg">Message</label>
+                            <textarea id="frm_pesan" x-model="pesan" rows="5" :placeholder="translations[lang].contactPlaceholderMsg" class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue text-sm transition-all resize-none text-slate-900 dark:text-white"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full inline-flex items-center justify-center h-12 rounded-xl text-white bg-brand-blue hover:bg-blue-700 shadow-md transition-all font-semibold text-sm transform active:scale-95">
+                            <span x-show="!loading" x-text="translations[lang].contactSendBtn">Send Message</span>
+                            <span x-show="loading" class="flex items-center">
+                                <i class="fa-solid fa-spinner animate-spin mr-2"></i> <span x-text="translations[lang].contactSending">Sending...</span>
+                            </span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-brand-darkBg py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-200/60 dark:border-slate-800/60">
+                
+                <div class="flex items-center space-x-3">
+                    <div class="flex items-center justify-center w-10 h-10 bg-slate-100 dark:bg-brand-darkCard rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                        <span class="font-display font-bold text-base flex items-center justify-center">
+                            <span class="text-brand-blue">{</span>
+                            <span class="text-brand-orange">K</span>
+                            <span class="text-brand-blue">}</span>
+                        </span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-extrabold text-base tracking-tight text-slate-900 dark:text-white">KHOZAN</span>
+                        <span class="text-[9px] tracking-wider uppercase font-semibold text-brand-orange -mt-1">DEVELOPER</span>
+                    </div>
+                </div>
+
+                <p class="text-xs text-slate-500 dark:text-slate-400 text-center md:text-left max-w-sm" x-text="translations[lang].footerDesc">
+                    Building Educational Apps with Innovation. Lovingly crafted to bring premium digital tools to all classrooms.
+                </p>
+
+                <!-- Social links -->
+                <div class="flex space-x-4">
+                    <a href="https://github.com/khozan" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-indigo-500 text-slate-400 dark:text-slate-500 transition-colors flex items-center justify-center" aria-label="GitHub">
+                        <i class="fa-brands fa-github text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-brand-blue text-slate-400 dark:text-slate-500 transition-colors flex items-center justify-center" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-blue-600 text-slate-400 dark:text-slate-500 transition-colors flex items-center justify-center" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-pink-500 text-slate-400 dark:text-slate-500 transition-colors flex items-center justify-center" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-red-500 text-slate-400 dark:text-slate-500 transition-colors flex items-center justify-center" aria-label="YouTube">
+                        <i class="fa-brands fa-youtube text-lg"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-center sm:text-left">
+                <p class="text-[11px] text-slate-400" x-text="translations[lang].footerCopyright">
+                    &copy; 2026 Khozan Developer. All Rights Reserved.
+                </p>
+                <div class="flex space-x-6 text-[11px] text-slate-400">
+                    <a href="#" class="hover:text-slate-600 dark:hover:text-white transition-colors" x-text="lang === 'en' ? 'Terms & Conditions' : 'Syarat & Ketentuan'">Terms & Conditions</a>
+                    <a href="#" class="hover:text-slate-600 dark:hover:text-white transition-colors" x-text="lang === 'en' ? 'Privacy Policy' : 'Kebijakan Privasi'">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div x-show="showToast"
+         x-transition:enter="transform ease-out duration-300 transition"
+         x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
+         x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         @click.outside="showToast = false"
+         class="fixed bottom-5 right-5 z-50 max-w-sm w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-2xl rounded-2xl p-4 border border-slate-800 dark:border-slate-200 flex items-start space-x-3 cursor-pointer"
+         x-cloak>
+        <div class="flex-shrink-0 text-brand-orange text-lg mt-0.5">
+            <i class="fa-solid fa-circle-info"></i>
+        </div>
+        <div class="flex-1 space-y-1">
+            <p class="text-xs font-semibold leading-relaxed" x-text="toastMsg"></p>
+            <p class="text-[9px] text-slate-400 dark:text-slate-500" x-text="translations[lang].toastClose">Click anywhere to close</p>
+        </div>
+    </div>
+
+</body>
+</html>
